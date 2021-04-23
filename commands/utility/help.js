@@ -2,8 +2,9 @@ const {prefix} = require('D:/CSBless/config.json');
 
 module.exports = {
 	name: 'help',
+    aliases: ['h'],
 	description: 'A command to display all commands.',
-    usage: '!help for all commands or !help [command name] for a specific command.',
+    usage: 'no args for all commands or ?help [command name] for a specific command.',
 	execute(message, args) {
 		const data = [];
         const {commands} = message.client;
