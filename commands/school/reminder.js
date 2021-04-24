@@ -13,14 +13,13 @@ module.exports = {
         embed.setColor(0x5436c9); //set side colour to purple
         if (!args.length) { //sends all files
             let data = ""
-            const files = fs.readdirSync('D:/CSBless/classes');
+            const files = fs.readdirSync(path.join("/CSBless", "/classes"));
             for (i in files) { //adding text data from all class files to data
                 data += file[i].slice(0,-4).toUpperCase() + '\n\n';
                 data += fs.readFileSync(path.resolve('classes', files[i]), 'utf8').toString();
             }
             embed.setTitle('Reminders');
             embed.setDescription(data);
-            files.close();
         } else { //sends given class
             let data = "";
             try { //tries to access the specific class
@@ -30,11 +29,10 @@ module.exports = {
             } catch { //catches if the class doesn't have a reminder file
                 message.channel.send("Error: Class does not have a reminder.");
                 message.channel.send("Here's a list of classes:")
-                const files = fs.readdirSync('D:/CSBless/classes');
+                const files = fs.readdirSync(path.join("/CSBless", "/classes"));
                 for (i in files) {
                     data += files[i].slice(0,-4).toUpperCase() + '\n';
                 }
-                files.close();
             } finally {
                 embed.setDescription(data);
             }

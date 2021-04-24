@@ -1,4 +1,4 @@
-const {MessageAttachment, DiscordAPIError} = require('discord.js');
+const {MessageAttachment, DiscordAPIError, MessageEmbed} = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
@@ -9,7 +9,6 @@ module.exports = {
     usage: '[class code] (format for class code is [subject code][class number], ex "math1600", "cs1027")',
     aliases: ['rd', 'download'],
     args: true,
-    permissions: 'ADMINISTRATOR',
 	execute(message, args) {
         try { //tries to access the specific class
             const name = args[0];
@@ -17,13 +16,20 @@ module.exports = {
             const attachment = new MessageAttachment(buffer, name + '.txt'); //creates a new attachment with the file
             message.channel.send(`${name} reminder file:`, attachment);
         } catch { //catches if the class doesn't have a reminder file
+            //reads the folder of available classes
             message.channel.send("Error: Class does not have a reminder.");
             message.channel.send("Here's a list of classes:")
-            const files = fs.readdirSync('D:/CSBless/classes');
+            const files = fs.readdirSync(path.join("/CSBless", "/classes"));
+            let data = "";
             for (i in files) {
-                data += files[i].slice(0,-4).toUpperCase() + '\n';
+                data += files[i].slice(0,-4).toUpperCase() + '\n'; //sinces extension from each file and adds them to data
             }
-            files.close();
+
+            //creates embed of classes to send
+            const embed = new MessageEmbed() //message to be sent
+            embed.setTitle("Classes");
+            embed.setDescription(data);
+            message.channel.send(embed);
         }
 	},
 };

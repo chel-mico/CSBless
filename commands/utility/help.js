@@ -1,4 +1,5 @@
-const {prefix} = require('D:/CSBless/config.json');
+const path = require('path');
+const {prefix} = require(path.join("/CSBless", "config.json"));
 
 module.exports = {
 	name: 'help',
@@ -13,7 +14,6 @@ module.exports = {
             data.push('Commands:');
             data.push(commands.map(command => command.name).join(', '));
             data.push(`\nDo\`${prefix}help [command name]\` to get the usage for that command`);
-            message.reply(data, { split: true });
         } else {
             const name = args[0].toLowerCase();
             const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
@@ -26,6 +26,6 @@ module.exports = {
             data.push(`**Cooldown:** ${command.cooldown || 1} second(s)`);
         }
 
-        message.reply(data, {split: true});
+        message.channel.send(data, {split: true});
 	},
 };

@@ -1,0 +1,26 @@
+FINAL EXAM
+- Tuesday, April 27th at 7PM EST
+- Linear exam held on Zoom
+- 3 hours long
+- Cumulative with emphasis on material from after the midterm
+- Exam is open book, notes and previous code is allowed
+    - Can't copy internet resources though (for obvious reasons)
+- Format:
+    - 5 multiple questions, about 10 minutes
+    - 4 algorithm , about 108 minutes (27 minutes each)
+    - 4 short answer questions, about 30 minutes (8 minutes each)
+    - 15 more multiple questions, use remaining time
+
+ZYBOOKS
+- Due Friday, April 23rd
+- Reading list:
+    - 6.1-6.15
+    - 7.1-7.7
+    - 9.1-4
+    - 11.1-5
+    - 12.1-4
+    - 13.1-13
+    - 14.3-8
+    - 15.1, 15.3-4
+    - 16.1-9
+    - 17.1-10 (omit 17.6)

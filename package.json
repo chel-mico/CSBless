@@ -4,7 +4,7 @@
   "description": "A discord bot to assist the Western University CS class of '24 and '25.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,7 @@
   "dependencies": {
     "discord.js": "^12.5.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
 }

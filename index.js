@@ -29,20 +29,24 @@ client.on('message', message => {
 
 	//for server only commands
 	if (command.guildOnly && message.channel.type === 'dm') {
-		return message.reply('I can\'t execute that command inside DMs!');
+		return message.channel.send('Error: command is only executable inside a server.');
 	}
 
 	//for admin commands
 	if (command.permissions) {
 		const authorPerms = message.channel.permissionsFor(message.author);
 		if (!authorPerms || !authorPerms.has(command.permissions)) {
-			return message.reply('You can not do this!');
+			if (command.permissions === "ADMINISTRATOR") {
+				return message.channel.send('Error: you do not have permission to use this command. Administrator needed.');
+			}
+			const perms = command.permissions;
+			return message.channel.send(`Error: you do not have permission to use this command. ${perms.chatAt(o) + name.slice(1).toLowerCase()} or administator needed.`);
 		}
 	}
 
 	//for commands with arguments
 	if (command.args && !args.length) {
-		let reply = `You didn't provide any arguments, ${message.author}.`;
+		let reply = "Error: no arguments provided.";
 		if (command.usage) {
 			reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
 		}
@@ -67,12 +71,24 @@ client.on('message', message => {
 	timestamps.set(message.author.id, timeNow);
 	setTimeout(() => timestamps.delete(message.author.id), cooldownTime);
 
+	//argument overload proofing to keep the bot from lagging too much
+	const maxArgs = 100;
+	const maxArgLength = 5000;
+	if (args.length > maxArgs) {
+		return message.reply(`Error: too many arguments. Maximum number of arguments is ${maxArgs}.`);
+	}
+	for (let i = 0; i < args.length; i++) {
+		if (args[i].length > maxArgLength) {
+			return message.reply(`Error: one or more arguments are too long. Maximum length is ${maxArgLength} characters per argument.`);
+		}
+	}
+
 	//actual command execution
 	try {
 		command.execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
+		message.reply('Unexpected error: please contact Ansel or Teddy detailing what caused this behaviour.');
 	}
 });
 
