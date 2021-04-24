@@ -60,7 +60,7 @@ client.on('message', message => {
 	if (timestamps.has(message.author.id)) {
 		const expiration = timestamps.get(message.author.id) + cooldownTime;
 		if (timeNow < expiration) {
-			const timeLeft = (expiration - now) / 1000;
+			const timeLeft = (expiration - timeNow) / 1000;
 			return message.reply(`${timeLeft.toFixed(1)} more second(s) until you can use \`${prefix}${command.name}\`.`);
 		}
 	}
