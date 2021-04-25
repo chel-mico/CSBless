@@ -1,9 +1,11 @@
 const path = require('path');
+const fs = require('fs');
 const {prefix} = require(path.join("/CSBless", "config.json"));
 const {MessageEmbed} = require('discord.js');
 
 module.exports = {
 	name: 'help',
+    category: 'Other Commands',
     aliases: ['h'],
 	description: 'A command to display all commands.',
     usage: 'no args for all commands or ?help [command name] for a specific command.',
@@ -13,10 +15,20 @@ module.exports = {
 		let data = '';
         const {commands} = message.client;
 
+        let current_category = "";
+        function help_map(command) {
+            if (current_category !== command.category) {
+                current_category = command.category;
+                return `\n**${current_category}**\n${command.name}`;
+            }
+            return command.name;
+        }
+
         if (!args.length) {
             embed.setTitle("Commands");
-            data += commands.map(command => command.name).join('\n');
-            data += `\nDo\`${prefix}help [command name]\` to get the usage for that command.`;
+            data += commands.map(help_map).join('\n');
+            data += `\n\nDo \`${prefix}help [command name]\` to get the usage for that command.`;
+            console.log(data);
         } else {
             const name = args[0].toLowerCase();
             embed.setTitle(name);

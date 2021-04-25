@@ -5,11 +5,12 @@ const https = require('https');
 
 module.exports = {
 	name: 'reminder_upload',
+    category: 'School Related Commands',
     description: 'Command to upload reminder files (.txt).',
     usage: '[class code] <.txt file> (format for class code is [subject code][class number], ex "math1600", "cs1027")',
     aliases: ['ru', 'upload'],
     args: true,
-    permissions: 'ADMINISTRATOR',
+    permissions: 'BAN_MEMBERS',
     guildOnly: true,
 	execute(message, args) {
         if (message.attachments.size == 0) { //catches when no file is provided

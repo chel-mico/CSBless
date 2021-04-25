@@ -1,5 +1,6 @@
 module.exports = {
 	name: 'blessings',
+    category: 'School Related Commands',
     description: 'Command to send the CS Blessings drive.',
     aliases: ['b'],
 	execute(message, args) {

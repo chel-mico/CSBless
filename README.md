@@ -3,9 +3,13 @@
 A discord bot to assist the Western University CS class of '24 and '25.
 
 ### Introduction:
-* This discord bot is meant to assist the Western University CS class of '24 and '25 in our discord server. If you are not from our class and you wish to demo the bot, check out our server: https://discord.gg/txXvqGte
-* Built in node.js using the discord.js library: https://github.com/discordjs/discord.js
-* For students: to request a feature or report a bug, please submit an issue here: https://github.com/chel-mico/CSBless/issues
+* This discord bot is meant to assist the Western University CS class of '24 and '25 in our discord server. If you are not from our class and you wish to demo the bot, check out [our server:](https://discord.gg/txXvqGte)
+* Built in node.js using the [discord.js library:](https://github.com/discordjs/discord.js)
+* For students: to request a feature or report a bug, please submit an issue [here:]{https://github.com/chel-mico/CSBless/issues)
+
+### Dependencies
+* [discord.js](https://github.com/discordjs/discord.js)
+* [jest](https://github.com/facebook/jest)
 
 ### Installation (for contributors)
 

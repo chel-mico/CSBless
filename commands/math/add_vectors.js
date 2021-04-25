@@ -3,6 +3,7 @@ const helper = require(path.join("/CSBless", "/helpers", "/vectors.js"));
 
 module.exports = {
 	name: 'add_vectors',
+    category: 'Vector Operations',
     description: 'Adds a set of given vectors.',
     usage: '[vector 1] [vector 2]...[vector n] (formatted as so, [1,2,3] [4,5,6] [7,8,9]...) (note: only works on real number vectors)',
     aliases: ['add'],

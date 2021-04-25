@@ -2,10 +2,11 @@ const fs = require('fs');
 
 module.exports = {
 	name: 'reload',
+	category: 'Other Commands',
 	description: 'Reloads a command.',
 	usage: '[command name]',
 	args: true,
-    permissions: 'ADMINISTRATOR',
+    permissions: 'BAN_MEMBERS',
 	execute(message, args) {
 		const commandName = args[0].toLowerCase();
 		const command = message.client.commands.get(commandName)

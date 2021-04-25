@@ -3,6 +3,7 @@ const helper = require(path.join("/CSBless", "/helpers", "/vectors.js"));
 
 module.exports = {
 	name: 'length',
+    category: 'Vector Operations',
     description: 'Takes the length of a given vector.',
     usage: '[vector 1] (formatted as so, [1,2,3]) (note: only works on real number vectors)',
     args: true,
@@ -13,7 +14,7 @@ module.exports = {
                 return message.channel.send("Error: wrong number of vectors. 1 vector needed.");
             }
             const x = helper.length(args[0]); 
-            message.channel.send(`The length of ${args[0]} is [${x.toString()}]`);
+            message.channel.send(`The length of ${args[0]} is ${x.toString()}`);
         } catch (e) {
             if (e) {
                 message.channel.send(e.toString());

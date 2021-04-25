@@ -3,80 +3,80 @@ Introduction
 
 This is a file detailing all commands within the bot.
 Any discrepencies between this file and the bot itself should be reported here: https://github.com/chel-mico/CSBless/issues
-Note: prefix '?' is used within discord
+Note: prefix '&' is used within discord
 Legend: [] indicates a text argument, while <> indicates a file to be uploaded along with the message
 
 
 Utility Commands
 
 
-?github
+&github
 - Sends the GitHub link for the bot.
-- Aliases: ?g, ?git
+- Aliases: &g, &git
 
-?help
+&help
 - A command to display all commands.
-- Aliases: ?h
-- Usage: No arguments to display the names of all commands or ?help [command name] for a specific command.
+- Aliases: &h
+- Usage: No arguments to display the names of all commands or &help [command name] for a specific command.
 
-?reload
+&reload
 - Reloads a command.
-- Usage: ?reload [command name]
+- Usage: &reload [command name]
 - Permissions: Administrator permission needed.
 
 
 School Commands
 
 
-?blessings
+&blessings
 - Sends the CS Blessing Google Drive folder.
-- Aliases: ?b
+- Aliases: &b
 
-?reminder_download
+&reminder_download
 - Downloads reminder files (.txt).
-- Aliases: ?rd, ?download
-- Usage: ?reminder_download [class code] (format for class code is [subject code][class number], ex "math1600", "cs1027")
+- Aliases: &rd, &download
+- Usage: &reminder_download [class code] (format for class code is [subject code][class number], ex "math1600", "cs1027")
 
-?reminder_upload
+&reminder_upload
 - Uploads reminder files (.txt)
-- Aliases: ?ru, ?upload
-- Usage: ?reminder_upload [class code] <.txt file> (format for class code is [subject code][class number], ex "math1600", "cs1027")
+- Aliases: &ru, &upload
+- Usage: &reminder_upload [class code] <.txt file> (format for class code is [subject code][class number], ex "math1600", "cs1027")
 - Permissions: Administrator permission needed.
 
-?reminder
+&reminder
 - Sends reminders for either all CS-related classes or a specific class.
-- Aliases: ?r
-- Usage: No arguments for a general reminder or ?reminder [class code] for a specific class (format is [subject code][class number], ex "math1600", "cs1027")
+- Aliases: &r
+- Usage: No arguments for a general reminder or &reminder [class code] for a specific class (format is [subject code][class number], ex "math1600", "cs1027")
 
 
 Linear Algebra Commands
 
 
-?add_vectors
+&add_vectors
 - Adds a set of given vectors.
-- Aliases: ?add
-- Usage: ?add_vectors [vector 1] [vector 2]...[vector n] (formatted as so, [1,2,3] [4,5,6] [7,8,9]...) (note: only works on real number vectors)
+- Aliases: &add
+- Usage: &add_vectors [vector 1] [vector 2]...[vector n] (formatted as so, [1,2,3] [4,5,6] [7,8,9]...) (note: only works on real number vectors)
 
-?cross_product
+&cross_product
 - Takes the cross product of two given vectors.
-- Aliases: ?cp, ?cross
-- Usage: ?cross_product [vector 1] [vector 2] (formatted as so, [1,2,3], [4,5,6]) (note: only works on real number vectors) (make sure both vectors are in R^3)
+- Aliases: &cp, &cross
+- Usage: &cross_product [vector 1] [vector 2] (formatted as so, [1,2,3], [4,5,6]) (note: only works on real number vectors) (make sure both vectors are in R^3)
 
-?dot_product
+&dot_product
 - Takes the dot product of two given vectors.
-- Aliases: ?dp, ?dot
-- Usage: ?dot_product [vector 1] [vector 2] (formatted as so, [1,2,3], [4,5,6]) (note: only works on real number vectors)
+- Aliases: &dp, &dot
+- Usage: &dot_product [vector 1] [vector 2] (formatted as so, [1,2,3], [4,5,6]) (note: only works on real number vectors)
 
-?length
+&length
 - Takes the length of a given vector.
 - Usage: [vector 1] (formatted as so, [1,2,3]) (note: only works on real number vectors)
 
-?projection
+&projection
 - Takes the projection of a vector v on to a vector u.
-- Aliases: ?proj
-- Usage: ?projection [vector u] [vector v] (formatted as so, [1,2,3] [4,5,6]) (note: only works on real number vectors)
+- Aliases: &proj
+- Usage: &projection [vector u] [vector v] (formatted as so, [1,2,3] [4,5,6]) (note: only works on real number vectors)
 
-?scalar_product
+&scalar_product
 - Takes the product of a scalar and a vector.
-- Aliases: ?sp, ?scalar
-- Usage: ?scalar_product [scalar] [vector 1] (formatted as so, 3 [1,2,3]) (note: only works on real number vectors and scalars)
+- Aliases: &sp, &scalar
+- Usage: &scalar_product [scalar] [vector 1] (formatted as so, 3 [1,2,3]) (note: only works on real number vectors and scalars)

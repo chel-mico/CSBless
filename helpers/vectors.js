@@ -136,12 +136,13 @@ const cross_product = function(v1, v2) {
  * @returns {array[number]} The product of the scalar and the vector.
  */
 const scalar_product = function(c, v) {
-    if (isNaN(c) || typeof(c) !== 'number') {
+    scalar = parseFloat(c);
+    if (isNaN(scalar) || typeof(scalar) !== 'number') {
         throw "Error: scalar must be a number."
     }
     const vector = parse_vector(v);
     for (i = 0; i < vector.length; i++) {
-        vector[i] = round(vector[i] * c);
+        vector[i] = round(vector[i] * scalar);
         is_safe(vector[i]);
     }
     return vector;

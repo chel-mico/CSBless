@@ -21,7 +21,8 @@ client.once('ready', () => {
 client.on('message', message => {
 	//base requirements (is a command, command exists, etc.)
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	//line 25 might be a problem when matrices get introduced
+	const args = message.content.slice(prefix.length).trim().replace(/\s+(?=[^[\]]*\])/g, "").split(/ +/); //slices arguments and makes sure vectors are joined accordingly
 	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
@@ -36,8 +37,8 @@ client.on('message', message => {
 	if (command.permissions) {
 		const authorPerms = message.channel.permissionsFor(message.author);
 		if (!authorPerms || !authorPerms.has(command.permissions)) {
-			if (command.permissions === "ADMINISTRATOR") {
-				return message.channel.send('Error: you do not have permission to use this command. Administrator needed.');
+			if (command.permissions === "BAN_MEMBERS") {
+				return message.channel.send('Error: you do not have permission to use this command. Admin needed.');
 			}
 			const perms = command.permissions;
 			return message.channel.send(`Error: you do not have permission to use this command. ${perms.chatAt(o) + name.slice(1).toLowerCase()} or administator needed.`);

@@ -3,6 +3,7 @@ const helper = require(path.join("/CSBless", "/helpers", "/vectors.js"));
 
 module.exports = {
 	name: 'projection',
+    category: 'Vector Operations',
     description: 'Takes the projection of a vector v on to a vector u.',
     usage: '[vector u] [vector v] (formatted as so, [1,2,3] [4,5,6]) (note: only works on real number vectors)',
     aliases: ['proj'],

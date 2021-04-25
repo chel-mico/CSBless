@@ -1,5 +1,6 @@
 module.exports = {
-	name: 'blessings',
+	name: 'github',
+    category: 'Other Commands',
     description: 'Command to send the GitHub link for this bot.',
     aliases: ['g', 'git'],
 	execute(message, args) {
