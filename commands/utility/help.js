@@ -8,7 +8,7 @@ module.exports = {
     category: 'Other Commands',
     aliases: ['h'],
 	description: 'A command to display all commands.',
-    usage: 'no args for all commands or ?help [command name] for a specific command.',
+    usage: 'no args for all commands or &help [command name] for a specific command.',
 	execute(message, args) {
         const embed = new MessageEmbed() //message to be sent
         embed.setColor(0x5436c9); //set side colour to purple
@@ -31,17 +31,17 @@ module.exports = {
             console.log(data);
         } else {
             const name = args[0].toLowerCase();
-            embed.setTitle(name);
             const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
             if (!command) {
 	           return message.channel.send('Command does not exist.');
             }
-
+            embed.setTitle(command.name);
+            
             if (command.description) data += `**Description:** ${command.description}\n`;
             if (command.aliases) {
-                if (command.usage) data += `**Aliases: **`;
-                for (let i = 0; i < command.aliases.length-1; i++) {
-                    data += `${prefix}${command.name}, `
+                data += `**Aliases: **`;
+                for (let i = 0; i < command.aliases.length; i++) {
+                    data += `${prefix}${command.aliases[i]}, `
                 }
                 data += `${prefix}${command.name}\n`
             }
