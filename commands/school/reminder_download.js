@@ -9,6 +9,7 @@ module.exports = {
     usage: '[class code] (format for class code is [subject code][class number], ex "math1600", "cs1027")',
     aliases: ['rd', 'download'],
     args: true,
+    guildOnly: true,
 	execute(message, args) {
         try { //tries to access the specific class
             const name = args[0];

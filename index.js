@@ -88,7 +88,7 @@ client.on('message', message => {
 		command.execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply('Unexpected error: please contact Ansel or Teddy detailing what caused this behaviour.');
+		message.channel.send('Unexpected error: please open an issue on the GitHub if the problem persists. https://github.com/chel-mico/CSBless/issues');
 	}
 });
 

@@ -8,6 +8,7 @@ module.exports = {
     description: 'Command to send reminders for either all CS-related classes or a specific class.',
     usage: 'no args for a general reminder or ?reminder [class code] for a specific class (format is [subject code][class number], ex "math1600", "cs1027")',
     aliases: ['r'],
+    guildOnly: true,
 	execute(message, args) {
         const embed = new MessageEmbed() //message to be sent
         embed.setColor(0x5436c9); //set side colour to purple

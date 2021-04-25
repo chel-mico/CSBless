@@ -10,6 +10,7 @@ module.exports = {
     aliases: ['ru', 'upload'],
     args: true,
     permissions: 'ADMINISTRATOR',
+    guildOnly: true,
 	execute(message, args) {
         if (message.attachments.size == 0) { //catches when no file is provided
             message.channel.send("Error: must upload a file along with your message");   
