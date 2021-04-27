@@ -7,6 +7,7 @@ A discord bot to assist the Western University CS class of '24 and '25.
 * Built in node.js using the [discord.js library:](https://github.com/discordjs/discord.js)
 * For students: to request a feature or report a bug, please submit an issue [here:](https://github.com/chel-mico/CSBless/issues)
 * The name is homage to the CS Blessings google drive, a drive that has saved many first years from certain doom, including myself.
+* Licensed under Apache 2.0.
 
 ### Dependencies
 * [discord.js](https://github.com/discordjs/discord.js)
