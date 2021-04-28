@@ -1,9 +1,9 @@
 module.exports = {
 	name: 'blessings',
+    category: 'School Related Commands',
     description: 'Command to send the CS Blessings drive.',
-    usage: '',
     aliases: ['b'],
 	execute(message, args) {
-        message.channel.send("CS Blessings drive: https://drive.google.com/drive/u/0/folders/1y-Ui-vRQrWpu-3E-i6CdhpqRWfx2P53c")
+        message.channel.send("CS Blessings drive: https://drive.google.com/drive/u/0/folders/1y-Ui-vRQrWpu-3E-i6CdhpqRWfx2P53c");
 	},
 };

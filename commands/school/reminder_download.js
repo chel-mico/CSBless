@@ -5,10 +5,12 @@ const https = require('https');
 
 module.exports = {
 	name: 'reminder_download',
+    category: 'School Related Commands',
     description: 'Command to download reminder files (.txt).',
     usage: '[class code] (format for class code is [subject code][class number], ex "math1600", "cs1027")',
     aliases: ['rd', 'download'],
     args: true,
+    guildOnly: true,
 	execute(message, args) {
         try { //tries to access the specific class
             const name = args[0];

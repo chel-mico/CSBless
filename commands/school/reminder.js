@@ -5,17 +5,19 @@ const path = require('path');
 
 module.exports = {
 	name: 'reminder',
+    category: 'School Related Commands',
     description: 'Command to send reminders for either all CS-related classes or a specific class.',
     usage: 'no args for a general reminder or ?reminder [class code] for a specific class (format is [subject code][class number], ex "math1600", "cs1027")',
     aliases: ['r'],
+    guildOnly: true,
 	execute(message, args) {
         const embed = new MessageEmbed() //message to be sent
         embed.setColor(0x5436c9); //set side colour to purple
         if (!args.length) { //sends all files
             let data = ""
             const files = fs.readdirSync(path.join("/CSBless", "/classes"));
-            for (i in files) { //adding text data from all class files to data
-                data += file[i].slice(0,-4).toUpperCase() + '\n\n';
+            for (i = 0; i < files.length; i++) { //adding text data from all class files to data
+                data += files[i].slice(0,-4).toUpperCase() + '\n\n';
                 data += fs.readFileSync(path.resolve('classes', files[i]), 'utf8').toString();
             }
             embed.setTitle('Reminders');
