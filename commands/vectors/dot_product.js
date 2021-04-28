@@ -20,7 +20,7 @@ module.exports = {
             if (e) {
                 message.channel.send(e.toString());
             } else {
-                message.channel.send("Unspecified error.");
+                message.channel.send("Unspecified error.");//d
             }
         }
 	},
