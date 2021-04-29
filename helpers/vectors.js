@@ -7,7 +7,7 @@
  * 
  * @returns The rounded number.
  */
-function round(x) {
+const round = function(x) {
     return Math.round(x * 10) / 10;
 }
 
@@ -18,7 +18,7 @@ function round(x) {
  * 
  * @param {number} x The number to be checked.
  */
-function is_safe(x) {
+ const is_safe = function(x) {
     const max_safe = 5000000;
     const min_safe = -5000000;
     if (x < min_safe || x > max_safe) {
@@ -36,19 +36,19 @@ function is_safe(x) {
  * @access private
  * @see    is_safe
  * 
- * @param {int}    size The specified size of the vector.
+ * @param {int}    [size] The specified size of the vector.
  * @param {string} v    The vector string.
  * 
  * @returns {array[number]} The vector array.
  */
-function parse_vector(v, size = 0) {
+const parse_vector = function(v, size = 0) {
     const check = /\[[0-9-.,]+[0-9-.]*\]/; //regex for array of floats
     if (check.test(v)) { //checks arg against the regex
         vector = v.substring(1, v.length - 1).split(','); //parses the numbers into an array
         if (vector.length !== size && size > 0) { //runs if one of the vectors isn't the right size
             throw new Error("Error: one of the vectors is not of the right size.");
         }
-        for (let i = 0; i < size; i++) { //parses floats from a1-an
+        for (let i = 0; i < vector.length; i++) { //parses floats from a1-an
             vector[i] = parseFloat(vector[i]);
             is_safe(vector[i]);
         }
@@ -238,5 +238,8 @@ module.exports = {
     add: add_vectors,
     sp: scalar_product,
     length: length,
-    proj: projection
+    proj: projection,
+    parse: parse_vector,
+    safe: is_safe,
+    round: round
 }

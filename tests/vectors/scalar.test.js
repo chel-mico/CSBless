@@ -19,7 +19,7 @@ test('throws error for maximum length', function() {
 });
 
 test('throws error for non-number scalars', function() {
-    expect(() => sp('3', '[1,-1]')).toThrow();
+    expect(() => sp('e', '[1,-1]')).toThrow();
 });
 
 test('throws error for unformatted vectors', function() {

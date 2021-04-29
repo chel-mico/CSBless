@@ -13,13 +13,14 @@ function parse_matrix(m) {
     const check = /\{(\[[0-9-.,]+[0-9-.]*\]\|)+(\[[0-9-.,]+[0-9-.]*\])*\}/ //regex for double array of floats
     if (check.test(m)) { //checks arg against the regex
         let size = 0;
-        matrix = m.substring(1, m.length - 1).split('|').map(row => function(row){ //parses the numbers into an array
+        matrix = m.substring(1, m.length - 1).split('|').map(row => { //parses the numbers into an array
             if (size === 0) {
-                row = vectors.parse_vector(row);
-                size = row.length
+                row = vectors.parse(row);
+                size = row.length;
             } else {
-                row = vectors.parse_vector(row, size);
+                row = vectors.parse(row, size);
             }
+            return row;
         });
     } else { //runs if matrix is not fotmatted properly
         throw new Error("Error: one of the matrices is invalid.");
@@ -35,7 +36,7 @@ function parse_matrix(m) {
  */
 const dimension = function(m) {
     matrix = parse_matrix(m);
-    return matrix.length, matrix[0].length
+    return [matrix.length, matrix[0].length];
 }
 
 /**
