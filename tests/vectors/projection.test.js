@@ -1,5 +1,5 @@
 const path = require('path');
-const {proj} = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const {proj} = require(path.join("../CSBless", "/helpers", "/vectors.js"));
 
 test('projection of natural number vectors', function() {
     expect(proj('[1,0,0]', '[0,0,1]')).toEqual([0,0,0]);

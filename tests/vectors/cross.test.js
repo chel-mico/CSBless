@@ -1,5 +1,5 @@
 const path = require('path');
-const {cp} = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const {cp} = require(path.join("../CSBless", "/helpers", "/vectors.js"));
 
 test('cross product of natural number vectors', function() {
     expect(cp('[1,0,0]', '[0,0,1]')).toEqual([0,-1,0]);

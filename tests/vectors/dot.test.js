@@ -1,5 +1,5 @@
 const path = require('path');
-const {dp} = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const {dp} = require(path.join("../CSBless", "/helpers", "/vectors.js"));
 
 test('dot product of natural number vectors', function() {
     expect(dp('[1,0,0]', '[0,0,1]')).toEqual(0);

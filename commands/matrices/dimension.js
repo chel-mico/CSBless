@@ -1,8 +1,8 @@
 const path = require('path');
-const helper = require(path.join("/CSBless", "/helpers", "/matrices.js"));
+const helper = require(path.resolve(process.cwd(), "./helpers/matrices.js"));
 
 module.exports = {
-	name: 'dimensions',
+	name: 'dimension',
     category: 'Matrix Operations',
     description: 'Returns the dimensions of a given matrix.',
     usage: '[matrix 1] (formatted like so, {[1,2]|[1,2]}, where each vector in the matrix is a row) (note: only works on real number matrices)',
@@ -14,8 +14,8 @@ module.exports = {
             if (args.length !== 1) {
                 return message.channel.send("Error: one matrix only.");
             }
-            const {m, n} = helper.add(args);
-            message.channel.send(`Dimensions of the matrix are ${m}x${n}`);
+            const arr = helper.dim(args[0]);
+            message.channel.send(`Dimensions of the matrix are ${arr[0]}x${arr[1]}`);
         } catch (e) {
             if (e) {
                 message.channel.send(e.toString());

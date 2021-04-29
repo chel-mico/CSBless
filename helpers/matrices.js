@@ -1,12 +1,12 @@
 const path = require('path');
-const vectors = require(path.join('/CSBless', "/helpers", "/vectors.js"));
+const vectors = require(path.resolve(process.cwd(), "./helpers/vectors.js"));
 
 //TODO: finish parse_matrix, dim and add_matrices
 
 /**
  * Function to parse a matrix from a string.
  * 
- * @param {*} m The matrix to be parsed.
+ * @param {string} m The matrix to be parsed.
  * @returns The matrix as a double array of floats.
  */
 function parse_matrix(m) {
@@ -28,6 +28,18 @@ function parse_matrix(m) {
     return matrix;
 }
 
+const to_string = function(m) {
+    let str = '\n' + m.map(row => {
+        let s = '[  ';
+        for (let i = 0; i < row.length; i++) {
+            s += row[i] + "  ";
+        }
+        s += ']'
+        return s;
+    }).join('\n');
+    return str;
+}
+
 /**
  * Function to return the dimensions of a matrix.
  * 
@@ -35,7 +47,9 @@ function parse_matrix(m) {
  * @returns Height of the matrix (int), length of the matrix (int).
  */
 const dimension = function(m) {
-    matrix = parse_matrix(m);
+    if (typeof m === 'string') {
+        matrix = parse_matrix(m);
+    }
     return [matrix.length, matrix[0].length];
 }
 
@@ -46,10 +60,33 @@ const dimension = function(m) {
  * @returns The matrix addition.
  */
 const add_matrices = function(m) {
-    return '';
+    let dimensions = [];
+    const matrices = [];
+    for (let i = 0; i < m.length; i++) {
+        console.log(m[i]);
+        matrices[i] = parse_matrix(m[i]);
+        if (dimensions.length === 0) {
+            dimensions = dimension(matrices[i]);
+        } else {
+            let dim = dimension(matrices[i]);
+            if (dim[0] !== dimensions[0] || dim[1] !== dimensions[1]) {
+                throw "Error: two or more vectors are not the same size.";
+            }
+        }
+    }
+    let final_matrix = matrices[0];
+    for (let i = 1; i < matrices.length; i++) {
+        for (let j = 0; j < dimensions[0]; j++) {
+            for (let k = 0; k < dimensions[1]; k++) {
+                final_matrix[j][k] += matrices[i][j][k];
+            }
+        }
+    }
+    return final_matrix;
 }
 
 module.exports = {
     dim: dimension,
-    addM: add_matrices
+    addM: add_matrices,
+    str: to_string
 }

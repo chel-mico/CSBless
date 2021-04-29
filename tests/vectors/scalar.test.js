@@ -1,5 +1,5 @@
 const path = require('path');
-const {sp} = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const {sp} = require(path.join("../CSBless", "/helpers", "/vectors.js"));
 
 test('scalar product of natural number vectors', function() {
     expect(sp(3, '[1,0,0]')).toEqual([3,0,0]);

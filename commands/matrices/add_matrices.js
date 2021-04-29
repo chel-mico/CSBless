@@ -1,5 +1,6 @@
 const path = require('path');
-const helper = require(path.join("/CSBless", "/helpers", "/matrices.js"));
+//const helper = require(path.normalize(__dirname.replace('\\commands\\matrices', "\\helpers\\matrices.js")));
+const helper = require(path.resolve(process.cwd(), "./helpers/matrices.js"));
 
 module.exports = {
 	name: 'add_matrices',
@@ -14,11 +15,12 @@ module.exports = {
             if (args.length < 2) {
                 return message.channel.send("Error: not enough matrices. At least 2 matrices needed.");
             }
-            const x = helper.add(args);
-            message.channel.send(`Adding the set of matrices gives us [${x.toString()}]`);
+            const x = helper.addM(args);
+            message.channel.send(`Adding the set of matrices gives us ${helper.str(x)}`);
         } catch (e) {
             if (e) {
                 message.channel.send(e.toString());
+                console.log(e);
             } else {
                 message.channel.send("Unspecified error.");
             }

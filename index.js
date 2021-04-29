@@ -22,7 +22,8 @@ client.on('message', message => {
 	//base requirements (is a command, command exists, etc.)
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	//line 25 might be a problem when matrices get introduced
-	const args = message.content.slice(prefix.length).trim().replace(/\s+(?=[^[\]]*\])/g, "").split(/ +/); //slices arguments and makes sure vectors are joined accordingly
+	//const args = message.content.slice(prefix.length).trim().replace(/\s+(?=[^[\]]*\])/g, "").split(/ +/); //slices arguments and makes sure vectors are joined accordingly
+	const args = message.content.slice(prefix.length).trim().replace(/\s+(?=[^{\}]*\})|\s+(?=[^[\]]*\])/g, "").split(/ +/);
 	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));

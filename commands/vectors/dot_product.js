@@ -1,5 +1,5 @@
 const path = require('path');
-const helper = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const helper = require(path.resolve(process.cwd(), "./helpers/vectors.js"));
 
 module.exports = {
 	name: 'dot_product',
