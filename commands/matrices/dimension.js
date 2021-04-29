@@ -5,7 +5,7 @@ module.exports = {
 	name: 'dimensions',
     category: 'Matrix Operations',
     description: 'Returns the dimensions of a given matrix.',
-    usage: '[matrix 1] (formatted like so, {[1,2], [1,2]}, where each vector in the matrix is a row) (note: only works on real number matrices)',
+    usage: '[matrix 1] (formatted like so, {[1,2]|[1,2]}, where each vector in the matrix is a row) (note: only works on real number matrices)',
     aliases: ['dim'],
     args: true,
     cooldown: 3,

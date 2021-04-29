@@ -10,17 +10,32 @@ const vectors = require(path.join('/CSBless', "/helpers", "/vectors.js"));
  * @returns The matrix as a double array of floats.
  */
 function parse_matrix(m) {
-    return [[0,0],[0,0]];
+    const check = /\{(\[[0-9-.,]+[0-9-.]*\]\|)+(\[[0-9-.,]+[0-9-.]*\])*\}/ //regex for double array of floats
+    if (check.test(m)) { //checks arg against the regex
+        let size = 0;
+        matrix = m.substring(1, m.length - 1).split('|').map(row => function(row){ //parses the numbers into an array
+            if (size === 0) {
+                row = vectors.parse_vector(row);
+                size = row.length
+            } else {
+                row = vectors.parse_vector(row, size);
+            }
+        });
+    } else { //runs if matrix is not fotmatted properly
+        throw new Error("Error: one of the matrices is invalid.");
+    }
+    return matrix;
 }
 
 /**
  * Function to return the dimensions of a matrix.
  * 
  * @param {string} m The matrix who's dimension is to be calculated.
- * @returns Height of the matrix, length of the matrix.
+ * @returns Height of the matrix (int), length of the matrix (int).
  */
 const dimension = function(m) {
-    return 1,2;
+    matrix = parse_matrix(m);
+    return matrix.length, matrix[0].length
 }
 
 /**

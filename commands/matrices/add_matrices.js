@@ -5,7 +5,7 @@ module.exports = {
 	name: 'add_matrices',
     category: 'Matrix Operations',
     description: 'Adds a set of given matrices.',
-    usage: '[matrix 1] [matrix 2]...[matrix m] (formatted like so, {[1,2], [1,2]} {[3,4], [3,4]}, where each vector in the matrix is a row) (note: only works on real number matrices)',
+    usage: '[matrix 1] [matrix 2]...[matrix m] (formatted like so, {[1,2]|[1,2]} {[3,4]|[3,4]}, where each vector in the matrix is a row) (note: only works on real number matrices)',
     aliases: ['addM'],
     args: true,
     cooldown: 3,
