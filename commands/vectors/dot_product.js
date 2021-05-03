@@ -17,10 +17,10 @@ module.exports = {
             const x = helper.dp(args[0], args[1]); //calls dot product from the helper file
             message.channel.send(`The dot product of ${args[0]} and ${args[1]} is ${x}`);
         } catch (e) { //catches errors thrown by helper file
-            if (e) {
+            if (/^Error: $/.test(e)) {
                 message.channel.send(e.toString());
             } else {
-                message.channel.send("Unspecified error.");//d
+                message.channel.send("Unspecified error. If the problem persists, please open an issue on our GitHub: https://github.com/chel-mico/CSBless/issues");
             }
         }
 	},

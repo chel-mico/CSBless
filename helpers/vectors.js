@@ -77,8 +77,19 @@ const parse_vector = function(v, size = 0) {
  * @returns {number} The dot product of the two vectors.
  */
 const dot_product = function(v1, v2) {
-    const vector1 = parse_vector(v1);
-    const vector2 = parse_vector(v2, vector1.length);
+    let vector1 = [], vector2 = [];
+    if (typeof v1 === 'string') {
+        vector1 = parse_vector(v1);
+    } else {
+        vector1 = v1;
+    }
+    if (typeof v2 === 'string') {
+        vector2 = parse_vector(v2, vector1.length);
+    } else {
+        vector2 = v2;
+    }
+    // const vector1 = parse_vector(v1);
+    // const vector2 = parse_vector(v2, vector1.length);
     let x = 0;
     for (let i = 0; i < vector1.length; i++) {
         x = x + round(vector1[i] * vector2[i]);

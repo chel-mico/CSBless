@@ -49,7 +49,7 @@ School Commands
 - Usage: No arguments for a general reminder or &reminder [class code] for a specific class (format is [subject code][class number], ex "math1600", "cs1027")
 
 
-Linear Algebra Commands
+Vector Commands
 
 
 &add_vectors
@@ -80,3 +80,27 @@ Linear Algebra Commands
 - Takes the product of a scalar and a vector.
 - Aliases: &sp, &scalar
 - Usage: &scalar_product [scalar] [vector 1] (formatted as so, 3 [1,2,3]) (note: only works on real number vectors and scalars)
+
+
+Matrix Commands
+
+
+&add_matrices
+- Adds a set of given matrices.
+- Aliases: &addM
+- Usage: &add_matrices [matrix 1] [matrix 2]...[matrix m] (formatted like so, {[1,2]|[1,2]} {[3,4]|[3,4]}, where each vector in the matrix is a row) (note: only works on real number matrices)
+
+&dimension
+- Gives the dimensions of a given matrix.
+- Aliases: &dim
+- Usage: &dimension [matrix 1] (formatted like so, {[1,2]|[1,2]}, where each vector in the matrix is a row) (note: only works on real number matrices)
+
+&matrix_product
+- Multiplies a set of given matrices.
+- Aliases: &mp
+- Usage: &matrix_product [matrix 1] [matrix 2]...[matrix m] (formatted like so, {[1,2]|[1,2]} {[3,4]|[3,4]}, where each vector in the matrix is a row) (note: only works on real number matrices)
+
+&transpose
+- Gives the transpose of a given matrix.
+- Aliases: &tp
+- Usage: &transpose [matrix 1] (formatted like so, {[1,2]|[1,2]}, where each vector in the matrix is a row) (note: only works on real number matrices)

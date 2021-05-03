@@ -17,10 +17,10 @@ module.exports = {
             const x = helper.add(args); 
             message.channel.send(`Adding the set of vectors gives us [${x.toString()}]`);
         } catch (e) {
-            if (e) {
+            if (/^Error: $/.test(e)) {
                 message.channel.send(e.toString());
             } else {
-                message.channel.send("Unspecified error.");
+                message.channel.send("Unspecified error. If the problem persists, please open an issue on our GitHub: https://github.com/chel-mico/CSBless/issues");
             }
         }
 	},

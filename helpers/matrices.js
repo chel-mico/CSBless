@@ -1,7 +1,19 @@
 const path = require('path');
 const vectors = require(path.resolve(process.cwd(), "./helpers/vectors.js"));
 
-//TODO: finish parse_matrix, dim and add_matrices
+/**
+ * Function to check whether or not a matrix is square
+ * 
+ * @param {array[float]} m The matrix.
+ * @returns True if the matrix is square, false otherwise.
+ */
+function is_square(m) {
+    const dim = dimension(m);
+    if (dim[0] === dim[1]) {
+        return true;
+    }
+    return false;
+}
 
 /**
  * Function to parse a matrix from a string.
@@ -25,19 +37,28 @@ function parse_matrix(m) {
     } else { //runs if matrix is not fotmatted properly
         throw new Error("Error: one of the matrices is invalid.");
     }
+    const dim = dimension(matrix);
+    if (dim[0] > 5 || dim[1] > 5) { //size cap at 5x5
+        throw "Error: matrix is too large. Maximum size is 5x5";
+    }
     return matrix;
 }
 
+/**
+ * Function to return a string representation of a matrix.
+ * 
+ * @param {array[number]} m The matrix.
+ * @returns A string representation of the matrix.
+ */
 const to_string = function(m) {
-    let str = '\n' + m.map(row => {
+    return '\n' + m.map(row => {
         let s = '[  ';
         for (let i = 0; i < row.length; i++) {
             s += row[i] + "  ";
         }
-        s += ']'
+        s += ']';
         return s;
-    }).join('\n');
-    return str;
+    }).join('\n'); //maps each row and joins then together with newlines
 }
 
 /**
@@ -63,7 +84,6 @@ const add_matrices = function(m) {
     let dimensions = [];
     const matrices = [];
     for (let i = 0; i < m.length; i++) {
-        console.log(m[i]);
         matrices[i] = parse_matrix(m[i]);
         if (dimensions.length === 0) {
             dimensions = dimension(matrices[i]);
@@ -78,15 +98,87 @@ const add_matrices = function(m) {
     for (let i = 1; i < matrices.length; i++) {
         for (let j = 0; j < dimensions[0]; j++) {
             for (let k = 0; k < dimensions[1]; k++) {
-                final_matrix[j][k] += matrices[i][j][k];
+                final_matrix[j][k] = round(final_matrix[j][k] + matrices[i][j][k]);
+                vectors.safe(final_matrix[j][k])
             }
         }
     }
     return final_matrix;
 }
 
+/**
+ * Function to multiply a set of compatable matrices in order of appearence.
+ * 
+ * @param {array[string]} m The array of matrix strings.
+ * @returns The matrix multiplication.
+ */
+const multiplication = function(m){
+    let dimensions = [], final_matrix = [];
+    const matrices = [];
+    for (let i = 0; i < m.length; i++) {
+        matrices[i] = parse_matrix(m[i]);
+        if (dimensions.length === 0) {
+            dimensions = dimension(matrices[i]);
+            final_matrix = matrices[i];
+        } else {
+            let dim = dimension(matrices[i]);
+            if (dim[1] !== dimensions[0]) {
+                throw "Error: two or more vectors are not the same size.";
+            }
+            const temp = transpose(matrices[i]);
+            const new_matrix = [];
+            for (let j = 0; j < final_matrix.length; j++) {
+                if (!new_matrix[j]) {
+                    new_matrix[j] = [];
+                }
+                for (let k = 0; k < temp.length; k++) {
+                    new_matrix[j][k] = vectors.dp(temp[k], final_matrix[j]);
+                }
+            }
+            final_matrix = new_matrix;
+            dimensions = dimension(final_matrix);
+        }
+    }
+    return final_matrix;
+}
+
+/**
+ * Function to transpose a matrix string.
+ * 
+ * @param {string} m The matrix to be transposed.
+ * @returns The transposed matrix.
+ */
+const transpose = function(m) {
+    let matrix;
+    if (typeof m === 'string') {
+        matrix = parse_matrix(m);
+    } else { //for use as a helper function
+        matrix = m;
+    }
+    let result = [];
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            if (!result[j]) {
+                result[j] = []; //initialize row
+            }
+            result[j][i] = matrix[i][j]; //turns rows of original matrix into columns of the new matrix
+        }
+    }
+    return result;
+}
+
+const determinant = function(m) {
+    //TODO: finish
+}
+
+const ref = function(m) {
+    //TODO: finish
+}
+
 module.exports = {
     dim: dimension,
     addM: add_matrices,
-    str: to_string
+    str: to_string,
+    mult: multiplication,
+    transpose: transpose
 }

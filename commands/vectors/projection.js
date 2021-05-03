@@ -17,7 +17,7 @@ module.exports = {
             const x = helper.proj(args[0], args[1]); 
             message.channel.send(`Adding the set of vectors gives us [${x.toString()}]`);
         } catch (e) {
-            if (/ Error: /.test(e)) {
+            if (/^Error: $/.test(e)) {
                 message.channel.send(e.toString());
             } else {
                 message.channel.send("Unspecified error. If the problem persists, please open an issue on our GitHub: https://github.com/chel-mico/CSBless/issues");
