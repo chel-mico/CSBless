@@ -1,5 +1,5 @@
 const path = require('path');
-const {add} = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const {add} = require(path.join("../CSBless", "/helpers", "/vectors.js"));
 
 test('adding natural number vectors', function() {
     expect(add(['[0,0,0]', '[1,1,1]', '[2,2,2]'])).toEqual([3,3,3]);

@@ -1,5 +1,5 @@
 const path = require('path');
-const helper = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const helper = require(path.resolve(process.cwd(), "./helpers/vectors.js"));
 
 module.exports = {
 	name: 'length',
@@ -16,10 +16,10 @@ module.exports = {
             const x = helper.length(args[0]); 
             message.channel.send(`The length of ${args[0]} is ${x.toString()}`);
         } catch (e) {
-            if (e) {
+            if (/^Error: $/.test(e)) {
                 message.channel.send(e.toString());
             } else {
-                message.channel.send("Unspecified error.");
+                message.channel.send("Unspecified error. If the problem persists, please open an issue on our GitHub: https://github.com/chel-mico/CSBless/issues");
             }
         }
 	},

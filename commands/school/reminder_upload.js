@@ -16,9 +16,9 @@ module.exports = {
         if (message.attachments.size == 0) { //catches when no file is provided
             message.channel.send("Error: must upload a file along with your message");   
         } else {
-            const files = fs.readdirSync(path.join("/CSBless", "/classes"));
+            const files = fs.readdirSync(path.resolve(process.cwd(), "./classes"));
             message.attachments.forEach((attachment, id) => { //fetches every attached file
-                const stream = fs.createWriteStream(path.join("/CSBless", "/classes", args[0] + ".txt")); 
+                const stream = fs.createWriteStream(path.resolve(process.cwd(), "./classes/" + args[0] + ".txt")); 
                 const request = https.get(attachment.url, function(response) { //pipes the file to the classes folder
                     response.pipe(stream);
                 });           

@@ -1,5 +1,5 @@
 const path = require('path');
-const {length} = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const {length} = require(path.join("../CSBless", "/helpers", "/vectors.js"));
 
 test('length of natural number vectors', function() {
     expect(length('[1,0,0]')).toEqual(1);

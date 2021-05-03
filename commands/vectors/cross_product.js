@@ -1,5 +1,5 @@
 const path = require('path');
-const helper = require(path.join("/CSBless", "/helpers", "/vectors.js"));
+const helper = require(path.resolve(process.cwd(), "./helpers/vectors.js"));
 
 module.exports = {
 	name: 'cross_product',
@@ -17,10 +17,10 @@ module.exports = {
             const x = helper.cp(args[0], args[1]); 
             message.channel.send(`The cross product of ${args[0]} and ${args[1]} is [${x.toString()}]`);
         } catch (e) {
-            if (e) {
+            if (/^Error: $/.test(e)) {
                 message.channel.send(e.toString());
             } else {
-                message.channel.send("Unspecified error.");
+                message.channel.send("Unspecified error. If the problem persists, please open an issue on our GitHub: https://github.com/chel-mico/CSBless/issues");
             }
         }
 	},

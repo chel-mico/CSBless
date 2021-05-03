@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const {prefix} = require(path.join("/CSBless", "config.json"));
+const {prefix} = require(path.resolve(process.cwd(), "./config.json"));
 const {MessageEmbed} = require('discord.js');
 
 module.exports = {
