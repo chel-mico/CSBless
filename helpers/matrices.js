@@ -98,7 +98,7 @@ const add_matrices = function(m) {
     for (let i = 1; i < matrices.length; i++) {
         for (let j = 0; j < dimensions[0]; j++) {
             for (let k = 0; k < dimensions[1]; k++) {
-                final_matrix[j][k] = round(final_matrix[j][k] + matrices[i][j][k]);
+                final_matrix[j][k] = vectors.round(final_matrix[j][k] + matrices[i][j][k]);
                 vectors.safe(final_matrix[j][k])
             }
         }
@@ -167,8 +167,44 @@ const transpose = function(m) {
     return result;
 }
 
+/**
+ * Function to calculate the determinant of a matrix.
+ * 
+ * @param {string} m The matrix who's determinant is to be calculated.
+ * @returns The determinant or 'undefined' if the determinant does not exist.
+ */
 const determinant = function(m) {
-    //TODO: finish
+    let matrix;
+    if (typeof m === 'string') {
+        matrix = parse_matrix(m);
+    }
+
+    //use an additional function and recursion to calculate the determinant
+    function solve(matrix, mul) {
+        let width = matrix.length;
+        if (width === 1) {
+            return matrix[0][0] * mul;
+        } else {
+            let sign = -1;
+            let result = 0;
+            for (let i = 0; i < width; i++) {
+                let m = [];
+                for (let j = 1; j < width; j++) {
+                    let buffer = [];
+                    for (let k = 0; k < width; k++) {
+                        if (k !== i) {
+                            buffer.push(matrix[j][k]);
+                        }
+                    }
+                    m.push(buffer);
+                }
+                sign *= -1;
+                result += mul * solve(m, matrix[0][i]*sign)
+            }
+            return result;
+        }
+    }
+    return solve(matrix,1)
 }
 
 const ref = function(m) {
@@ -180,5 +216,6 @@ module.exports = {
     addM: add_matrices,
     str: to_string,
     mult: multiplication,
-    transpose: transpose
+    transpose: transpose,
+    det: determinant
 }
