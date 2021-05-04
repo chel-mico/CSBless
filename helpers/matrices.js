@@ -178,7 +178,9 @@ const determinant = function(m) {
     if (typeof m === 'string') {
         matrix = parse_matrix(m);
     }
-
+    if (!is_square(matrix)) {
+        return "undefined (non-square matrix)";
+    }
     //use an additional function and recursion to calculate the determinant
     function solve(matrix, mul) {
         let width = matrix.length;

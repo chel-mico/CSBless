@@ -10,6 +10,10 @@ test('determinant of a 5x5 matrix', function() {
 });
 
 test('determinant of a non square matrix', function() {
+    expect(det("{[1,2,3]|[1,2,3]}")).toEqual("undefined (non-square matrix)");
+});
+
+test('determinant of matrix with unequally sized rows', function() {
     expect(() => det("{[1,2,3]|[1,2]}")).toThrow();
 });
 
