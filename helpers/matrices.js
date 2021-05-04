@@ -201,7 +201,8 @@ const determinant = function(m) {
                     m.push(buffer);
                 }
                 sign *= -1;
-                result += mul * solve(m, matrix[0][i]*sign)
+                result += vectors.round(mul * solve(m, matrix[0][i]*sign));
+                vectors.safe(result);
             }
             return result;
         }

@@ -1,5 +1,6 @@
 const path = require('path');
-const {det} = require(path.join("../CSBless", "/helpers", "/matrices.js"));
+//const {det} = require(path.join("../CSBless", "/helpers", "/matrices.js")); //This works as well
+const {det} = require(path.resolve(process.cwd(), "./helpers/matrices.js"));
 
 test('determinant of a 2x2 matrix', function() {
     expect(det("{[1,2]|[3,4]}")).toEqual(-2);
