@@ -104,3 +104,8 @@ Matrix Commands
 - Gives the transpose of a given matrix.
 - Aliases: &tp
 - Usage: &transpose [matrix 1] (formatted like so, {[1,2]|[1,2]}, where each vector in the matrix is a row) (note: only works on real number matrices)
+
+&determinant
+- Gives the determinant of a given matrix.
+- Aliases: &det
+- Usage: &determinant [matrix 1] (formatted like so, {[1,2]|[1,2]}, where each vector in the matrix is a row) (note: only works on real number matrices)
