@@ -17,7 +17,7 @@ A discord bot to assist the Western University CS class of '24 and '25.
 
 1. Clone the repo.
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/chel-mico/CSBless.git
    ```
 2. Install discord.js.
    ```sh
