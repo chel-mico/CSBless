@@ -210,6 +210,18 @@ const determinant = function(m) {
     return solve(matrix,1)
 }
 
+const trace = function(m) {
+    let matrix = parse_matrix(m);
+    if (!is_square(matrix)) {
+        throw new Error('Error: matrix must be square.');
+    }
+    let trace = 1;
+    for (let i = 0; i < matrix.length; i++) {
+        trace = vectors.round(trace * matrix[i][i]);
+    }
+    return trace;
+}
+
 const ref = function(m) {
     //TODO: finish
 }
@@ -220,5 +232,6 @@ module.exports = {
     str: to_string,
     mult: multiplication,
     transpose: transpose,
-    det: determinant
+    det: determinant,
+    tr: trace
 }
