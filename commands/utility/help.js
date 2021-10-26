@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const {prefix} = require(path.resolve(process.cwd(), "./config.json"));
+const prefix = process.env.PREFIX;
 const {MessageEmbed} = require('discord.js');
 
 module.exports = {
