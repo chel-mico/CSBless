@@ -1,7 +1,8 @@
 const {Client, Collection, Intents} = require('discord.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS]});
 const fs = require('fs');
-const {token, prefix} = require('./config.json');
+const token = process.env.TOKEN;
+const prefix = process.env.PREFIX
 
 client.commands = new Collection();
 client.cooldowns = new Collection();
