@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A discord bot to assist the Western University CS class of '24 and '25.",
   "main": "index.js",
+  "engines": {
+    "node": "17.x"
+  },
   "scripts": {
     "test": "jest",
     "start": "node index.js"
@@ -11,8 +14,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@heroku-cli/plugin-buildpacks": "^7.54.0",
+    "@heroku/buildpack-registry": "^1.0.1",
     "discord.js": "13.x",
-    "heroku": "^7.53.1"
+    "heroku": "^7.x"
   },
   "devDependencies": {
     "jest": "^26.6.3"
