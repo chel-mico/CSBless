@@ -16,6 +16,7 @@ for (const folder of folders) {
 }
 
 client.once('ready', () => {
+	client.user.setActivity('https://git.heroku.com/cs-bless.git', {type: 'WATCHING'});
     console.log('Ready!');
 });
 
