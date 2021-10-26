@@ -1,10 +1,10 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const {Client, Collection, Intents} = require('discord.js');
+const client = new Client({intents: [Intents.FLAGS.GUILDS]});
 const fs = require('fs');
 const {token, prefix} = require('./config.json');
 
-client.commands = new Discord.Collection();
-client.cooldowns = new Discord.Collection();
+client.commands = new Collection();
+client.cooldowns = new Collection();
 const folders = fs.readdirSync('./commands');
 for (const folder of folders) {
 	const files = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
