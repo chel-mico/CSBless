@@ -1,3 +1,4 @@
+require('dotenv').config();
 const {Client, Collection, Intents} = require('discord.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS]});
 const fs = require('fs');
@@ -20,7 +21,7 @@ client.once('ready', () => {
 	console.log(prefix);
 });
 
-client.on('message', message => {
+client.on('messageCreate', message => {
 	//base requirements (is a command, command exists, etc.)
 	console.log("k");
 	if (!message.content.startsWith(prefix) || message.author.bot) return;

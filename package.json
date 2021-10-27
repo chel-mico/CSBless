@@ -17,6 +17,7 @@
     "@heroku-cli/plugin-buildpacks": "^7.54.0",
     "@heroku/buildpack-registry": "^1.0.1",
     "discord.js": "13.x",
+    "dotenv": "^10.0.0",
     "heroku": "^7.x"
   },
   "devDependencies": {
