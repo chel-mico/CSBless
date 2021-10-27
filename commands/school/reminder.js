@@ -39,6 +39,6 @@ module.exports = {
                 embed.setDescription(data);
             }
         }
-        message.channel.send(embed);
+        message.channel.send({embeds: [embed]});
 	},
 };

@@ -1,6 +1,6 @@
 require('dotenv').config();
 const {Client, Collection, Intents} = require('discord.js');
-const client = new Client({intents: [Intents.FLAGS.GUILDS]});
+const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
 const fs = require('fs');
 const token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
@@ -61,7 +61,7 @@ client.on('messageCreate', message => {
 	//spam proofing
 	const {cooldowns} = client;
 	if (!cooldowns.has(command.name)) {
-		cooldowns.set(command.name, new Discord.Collection());
+		cooldowns.set(command.name, new Collection());
 	}
 	const timeNow = Date.now();
 	const timestamps = cooldowns.get(command.name);

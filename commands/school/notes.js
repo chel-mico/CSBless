@@ -23,6 +23,6 @@ module.exports = {
         }
         data += "CS Blessings: https://drive.google.com/drive/u/0/folders/1y-Ui-vRQrWpu-3E-i6CdhpqRWfx2P53c";
         embed.setDescription(data);
-        message.channel.send(embed);
+        message.channel.send({embeds: [embed]});
 	},
 };

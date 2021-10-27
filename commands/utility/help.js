@@ -28,7 +28,6 @@ module.exports = {
             embed.setTitle("Commands");
             data += commands.map(help_map).join('\n');
             data += `\n\nDo \`${prefix}help [command name]\` to get the usage for that command.`;
-            console.log(data);
         } else {
             const name = args[0].toLowerCase();
             const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
@@ -52,6 +51,6 @@ module.exports = {
         }
 
         embed.setDescription(data)
-        message.channel.send(embed);
+        message.channel.send({embeds: [embed]});
 	},
 };
