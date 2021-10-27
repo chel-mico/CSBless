@@ -17,7 +17,7 @@ for (const folder of folders) {
 
 client.once('ready', () => {
     console.log('Ready!');
-	console.log('prefix');
+	console.log(prefix);
 });
 
 client.on('message', message => {
