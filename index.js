@@ -22,10 +22,8 @@ client.once('ready', () => {
 
 client.on('message', message => {
 	//base requirements (is a command, command exists, etc.)
+	console.log("k");
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	if (message === "&ping") {
-		return message.channel.send("pong");
-	}
 	const checker = /\s+(?=[^{\}]*\})|\s+(?=[^[\]]*\])/g; //matches whitespace within {} and []
 	const args = message.content.slice(prefix.length).trim().replace(checker, "").split(/ +/); //splits args and replaces whitespace within {} and []
 	const commandName = args.shift().toLowerCase();
